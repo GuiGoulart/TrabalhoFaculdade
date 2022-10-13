@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "842650618497",
+    "project_id": "trabalhofaculdade-41bb2",
+    "storage_bucket": "trabalhofaculdade-41bb2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842650618497:android:dd445e90fadd5c51669b80",
+        "android_client_info": {
+          "package_name": "com.severo.trabalho_arquiterura_sistema"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842650618497-ehun33fe06ief2jhfnh99v1v4jb64b8a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.severo.trabalho_arquiterura_sistema",
+            "certificate_hash": "8c761ad717e0a0f4266de95563fd50d0da6bf73f"
+          }
+        },
+        {
+          "client_id": "842650618497-p6nl9bsp9h8t78tls866nsemrs54tga2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0iPLU5sBijYGGZ9gO9S6gsMLfcfXCHGg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "842650618497-p6nl9bsp9h8t78tls866nsemrs54tga2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
