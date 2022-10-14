@@ -1,12 +1,14 @@
 package com.severo.trabalho_arquiterura_sistema.presentation.register
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
 import com.severo.trabalho_arquiterura_sistema.R
 import com.severo.trabalho_arquiterura_sistema.data.model.User
 import com.severo.trabalho_arquiterura_sistema.databinding.ActivityRegisterBinding
+import com.severo.trabalho_arquiterura_sistema.presentation.home.HomeDoctorActivity
+import com.severo.trabalho_arquiterura_sistema.presentation.home.HomeReceptionistActivity
 import com.severo.trabalho_arquiterura_sistema.util.*
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,6 +23,7 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         init()
+        validationCheckFunction()
     }
 
     private fun init() {
@@ -36,53 +39,66 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    fun observer() {
+    private fun validationCheckFunction() {
+        binding.switchDoctor.setOnClickListener {
+            if (binding.switchReceptionist.isChecked) {
+                binding.switchReceptionist.isChecked = false
+            }
+        }
+
+        binding.switchReceptionist.setOnClickListener {
+            if (binding.switchDoctor.isChecked) {
+                binding.switchDoctor.isChecked = false
+            }
+        }
+    }
+
+    private fun observer() {
         viewModel.register.observe(this) { state ->
             when(state){
                 is UiState.Loading -> {
-                    binding.registerBtn.setText("")
+                    binding.registerBtn.text = ""
                     binding.registerProgress.show()
                 }
                 is UiState.Failure -> {
-                    binding.registerBtn.setText("Register")
+                    binding.registerBtn.text = "Register"
                     binding.registerProgress.hide()
                     toast(state.error)
                 }
                 is UiState.Success -> {
-                    binding.registerBtn.setText("Register")
+                    binding.registerBtn.text = "Register"
                     binding.registerProgress.hide()
-                    toast(state.data)
+                    toast(getString(R.string.register_sucess))
+                    if(state.data.function === "Doctor") {
+                        startActivity(Intent(this, HomeDoctorActivity::class.java))
+                    } else {
+                        startActivity(Intent(this, HomeReceptionistActivity::class.java))
+                    }
                 }
             }
         }
     }
 
-    fun getUserObj(): User {
+    private fun getUserObj(): User {
         return User(
             id = "",
             first_name = binding.firstNameEt.text.toString(),
-            last_name = binding.lastNameEt.text.toString(),
-            job_title = binding.jobTitleEt.text.toString(),
+            function = if(binding.switchDoctor.isChecked) "Doctor" else "Receptionist",
             email = binding.emailEt.text.toString(),
         )
     }
 
-    fun validation(): Boolean {
+    private fun validation(): Boolean {
         var isValid = true
+
+        if (!binding.switchDoctor.isChecked && !binding.switchReceptionist.isChecked) {
+            isValid = false
+            toast(getString(R.string.enter_function))
+        }
 
         if (binding.firstNameEt.text.isNullOrEmpty()){
             isValid = false
             toast(getString(R.string.enter_first_name))
-        }
-
-        if (binding.lastNameEt.text.isNullOrEmpty()){
-            isValid = false
-            toast(getString(R.string.enter_last_name))
-        }
-
-        if (binding.jobTitleEt.text.isNullOrEmpty()){
-            isValid = false
-            toast(getString(R.string.enter_job_title))
         }
 
         if (binding.emailEt.text.isNullOrEmpty()){
