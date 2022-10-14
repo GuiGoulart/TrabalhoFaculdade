@@ -7,4 +7,5 @@
     <string name="invalid_email">E-mail invalido</string>
     <string name="enter_password">Digite a sua senha</string>
     <string name="invalid_password">Senha deve conter 8 caracter</string>
+    <string name="login_success">Login realizado com sucesso</string>
 </resources>
