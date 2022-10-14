@@ -20,10 +20,10 @@ class AuthRepositoryImp(
     override fun registerUser(
         email: String,
         password: String,
-        user: User, result: (UiState<String>) -> Unit
+        user: User, result: (UiState<User>) -> Unit
     ) {
         result.invoke(
-            UiState.Success("User register successfully!")
+            UiState.Success(user)
         )
     }
 
