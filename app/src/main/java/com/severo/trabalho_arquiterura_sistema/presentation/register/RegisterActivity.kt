@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.severo.trabalho_arquiterura_sistema.R
 import com.severo.trabalho_arquiterura_sistema.data.model.User
 import com.severo.trabalho_arquiterura_sistema.databinding.ActivityRegisterBinding
-import com.severo.trabalho_arquiterura_sistema.presentation.home.HomeDoctorActivity
 import com.severo.trabalho_arquiterura_sistema.presentation.home.HomeReceptionistActivity
+import com.severo.trabalho_arquiterura_sistema.presentation.home.doctor.HomeDoctorActivity
 import com.severo.trabalho_arquiterura_sistema.util.*
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,13 +29,16 @@ class RegisterActivity : AppCompatActivity() {
     private fun init() {
         observer()
         binding.registerBtn.setOnClickListener {
-            if (validation()){
+            if (validation()) {
                 viewModel.register(
                     email = binding.emailEt.text.toString(),
                     password = binding.passEt.text.toString(),
                     user = getUserObj()
                 )
             }
+        }
+        binding.imageBack.setOnClickListener {
+            onBackPressed()
         }
     }
 
@@ -55,7 +58,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun observer() {
         viewModel.register.observe(this) { state ->
-            when(state){
+            when (state) {
                 is UiState.Loading -> {
                     binding.registerBtn.text = ""
                     binding.registerProgress.show()
@@ -69,7 +72,7 @@ class RegisterActivity : AppCompatActivity() {
                     binding.registerBtn.text = "Register"
                     binding.registerProgress.hide()
                     toast(getString(R.string.register_sucess))
-                    if(state.data.function === "Doctor") {
+                    if (state.data.function === "Doctor") {
                         startActivity(Intent(this, HomeDoctorActivity::class.java))
                     } else {
                         startActivity(Intent(this, HomeReceptionistActivity::class.java))
@@ -83,7 +86,7 @@ class RegisterActivity : AppCompatActivity() {
         return User(
             id = "",
             first_name = binding.firstNameEt.text.toString(),
-            function = if(binding.switchDoctor.isChecked) "Doctor" else "Receptionist",
+            function = if (binding.switchDoctor.isChecked) "Doctor" else "Receptionist",
             email = binding.emailEt.text.toString(),
         )
     }
@@ -96,25 +99,25 @@ class RegisterActivity : AppCompatActivity() {
             toast(getString(R.string.enter_function))
         }
 
-        if (binding.firstNameEt.text.isNullOrEmpty()){
+        if (binding.firstNameEt.text.isNullOrEmpty()) {
             isValid = false
             toast(getString(R.string.enter_first_name))
         }
 
-        if (binding.emailEt.text.isNullOrEmpty()){
+        if (binding.emailEt.text.isNullOrEmpty()) {
             isValid = false
             toast(getString(R.string.enter_email))
-        }else{
-            if (!binding.emailEt.text.toString().isValidEmail()){
+        } else {
+            if (!binding.emailEt.text.toString().isValidEmail()) {
                 isValid = false
                 toast(getString(R.string.invalid_email))
             }
         }
-        if (binding.passEt.text.isNullOrEmpty()){
+        if (binding.passEt.text.isNullOrEmpty()) {
             isValid = false
             toast(getString(R.string.enter_password))
-        }else{
-            if (binding.passEt.text.toString().length < 8){
+        } else {
+            if (binding.passEt.text.toString().length < 8) {
                 isValid = false
                 toast(getString(R.string.invalid_password))
             }

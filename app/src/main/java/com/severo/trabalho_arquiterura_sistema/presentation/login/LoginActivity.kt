@@ -1,16 +1,14 @@
 package com.severo.trabalho_arquiterura_sistema.presentation.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.severo.trabalho_arquiterura_sistema.R
-import com.severo.trabalho_arquiterura_sistema.data.model.User
 import com.severo.trabalho_arquiterura_sistema.databinding.ActivityLoginBinding
-import com.severo.trabalho_arquiterura_sistema.presentation.home.HomeDoctorActivity
 import com.severo.trabalho_arquiterura_sistema.presentation.home.HomeReceptionistActivity
+import com.severo.trabalho_arquiterura_sistema.presentation.home.doctor.HomeDoctorActivity
 import com.severo.trabalho_arquiterura_sistema.presentation.register.RegisterActivity
-import com.severo.trabalho_arquiterura_sistema.presentation.register.RegisterViewModel
 import com.severo.trabalho_arquiterura_sistema.util.*
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,6 +35,10 @@ class LoginActivity : AppCompatActivity() {
                 )
             }
         }
+
+        binding.buttonRegister.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
     }
 
     private fun observer(){
@@ -55,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
                     binding.buttonLogin.text = "Login"
                     binding.registerProgress.hide()
                     toast(getString(R.string.login_success))
-                    if(binding.editTextEmail.text.toString() === "doctor@gmail.com") {
+                    if(binding.editTextEmail.text.toString() == "doctor@gmail.com") {
                         startActivity(Intent(this, HomeDoctorActivity::class.java))
                     } else {
                         startActivity(Intent(this, HomeReceptionistActivity::class.java))
