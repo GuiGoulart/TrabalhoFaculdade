@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.severo.trabalho_arquiterura_sistema.R
 import com.severo.trabalho_arquiterura_sistema.data.model.User
 import com.severo.trabalho_arquiterura_sistema.databinding.ActivityRegisterBinding
-import com.severo.trabalho_arquiterura_sistema.presentation.home.HomeReceptionistActivity
 import com.severo.trabalho_arquiterura_sistema.presentation.home.doctor.HomeDoctorActivity
+import com.severo.trabalho_arquiterura_sistema.presentation.home.receptionist.HomeReceptionistActivity
 import com.severo.trabalho_arquiterura_sistema.util.*
 import dagger.hilt.android.AndroidEntryPoint
 
