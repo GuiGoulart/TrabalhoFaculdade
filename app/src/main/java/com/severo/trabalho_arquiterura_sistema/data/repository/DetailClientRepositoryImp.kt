@@ -1,19 +1,10 @@
 package com.severo.trabalho_arquiterura_sistema.data.repository
 
-import android.content.SharedPreferences
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.gson.Gson
 import com.severo.trabalho_arquiterura_sistema.data.model.DetailClient
 import com.severo.trabalho_arquiterura_sistema.data.model.HistoricClient
 import com.severo.trabalho_arquiterura_sistema.util.UiState
 
-class DetailClientRepositoryImp(
-    val auth: FirebaseAuth,
-    val database: FirebaseFirestore,
-    val appPreferences: SharedPreferences,
-    val gson: Gson
-) : DetailClientRepository {
+class DetailClientRepositoryImp() : DetailClientRepository {
 
     override fun getlDetailClient(result: (UiState<DetailClient>) -> Unit) {
         result.invoke(

@@ -7,7 +7,7 @@ import com.severo.trabalho_arquiterura_sistema.data.model.Client
 import com.severo.trabalho_arquiterura_sistema.databinding.ItemClientBinding
 import com.severo.trabalho_arquiterura_sistema.util.OnEventItemClick
 
-class HomeDoctorViewHolder(
+class HomeReceptionistViewHolder(
     itemEventsBinding: ItemClientBinding,
     private val onItemClick: OnEventItemClick<Client>
 ) : RecyclerView.ViewHolder(itemEventsBinding.root) {

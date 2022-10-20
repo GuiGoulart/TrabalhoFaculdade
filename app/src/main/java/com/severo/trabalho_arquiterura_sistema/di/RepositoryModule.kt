@@ -1,9 +1,5 @@
 package com.severo.trabalho_arquiterura_sistema.di
 
-import android.content.SharedPreferences
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.gson.Gson
 import com.severo.trabalho_arquiterura_sistema.data.repository.*
 import dagger.Module
 import dagger.Provides
@@ -17,34 +13,31 @@ object RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideAuthRepository(
-        database: FirebaseFirestore,
-        auth: FirebaseAuth,
-        appPreferences: SharedPreferences,
-        gson: Gson
-    ): AuthRepository {
-        return AuthRepositoryImp(auth, database, appPreferences, gson)
+    fun provideAuthRepository(): AuthRepository {
+        return AuthRepositoryImp()
     }
 
     @Singleton
     @Provides
-    fun provideHomeDoctorRepository(
-        database: FirebaseFirestore,
-        auth: FirebaseAuth,
-        appPreferences: SharedPreferences,
-        gson: Gson
-    ): HomeDoctorRepository {
-        return HomeDoctorRepositoryImp(auth, database, appPreferences, gson)
+    fun provideHomeDoctorRepository(): HomeDoctorRepository {
+        return HomeDoctorRepositoryImp()
     }
 
     @Singleton
     @Provides
-    fun provideDetailClientRepository(
-        database: FirebaseFirestore,
-        auth: FirebaseAuth,
-        appPreferences: SharedPreferences,
-        gson: Gson
-    ): DetailClientRepository {
-        return DetailClientRepositoryImp(auth, database, appPreferences, gson)
+    fun provideDetailClientRepository(): DetailClientRepository {
+        return DetailClientRepositoryImp()
+    }
+
+    @Singleton
+    @Provides
+    fun provideRegisterClientRepository(): RegisterClientRepository {
+        return RegisterClientRepositoryImp()
+    }
+
+    @Singleton
+    @Provides
+    fun provideHomeReceptionistRepository(): HomeReceptionistRepository {
+        return HomeReceptionistRepositoryImp()
     }
 }

@@ -3,13 +3,9 @@ package com.severo.trabalho_arquiterura_sistema.data.repository
 import com.severo.trabalho_arquiterura_sistema.data.model.Client
 import com.severo.trabalho_arquiterura_sistema.util.UiState
 
-class HomeDoctorRepositoryImp() : HomeDoctorRepository {
+class HomeReceptionistRepositoryImp() : HomeReceptionistRepository {
 
-    override fun getAllPatient(result: (UiState<List<Client>>) -> Unit) {
-        result.invoke(UiState.Success(listOfClient()))
-    }
-
-    override fun getAllClientResult(result: (UiState<List<Client>>) -> Unit) {
+    override fun getAllClient(result: (UiState<List<Client>>) -> Unit) {
         result.invoke(UiState.Success(listOfClient()))
     }
 

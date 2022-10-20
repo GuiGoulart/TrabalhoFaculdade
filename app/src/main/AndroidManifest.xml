@@ -14,6 +14,13 @@
         android:theme="@style/Theme.TrabalhoArquiteruraSistema"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.home.registerclient.RegisterClientActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".presentation.home.detail.DetailClientActivity"
             android:exported="false">
             <meta-data

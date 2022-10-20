@@ -7,12 +7,12 @@ import com.severo.trabalho_arquiterura_sistema.data.model.Client
 import com.severo.trabalho_arquiterura_sistema.util.OnEventItemClick
 import javax.inject.Inject
 
-class HomeDoctorAdapter @Inject constructor(
+class HomeReceptionistAdapter @Inject constructor(
     private val onItemClick: OnEventItemClick<Client>
 ) : ListAdapter<Client, HomeReceptionistViewHolder>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeReceptionistViewHolder {
-        return HomeReceptionistViewHolder.create(parent, onItemClick)
+        return HomeDoctorViewHolder.create(parent, onItemClick)
     }
 
     override fun onBindViewHolder(holder: HomeReceptionistViewHolder, position: Int) {
