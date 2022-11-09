@@ -30,8 +30,8 @@ class LoginActivity : AppCompatActivity() {
         binding.buttonLogin.setOnClickListener {
             if (validation()){
                 viewModel.login(
-                    email = binding.textEmail.text.toString(),
-                    password = binding.textPassword.text.toString()
+                    email = binding.editTextEmail.text.toString(),
+                    password = binding.editTextPassword.text.toString()
                 )
             }
         }

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="4dp">
+    app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,6 +21,8 @@
             android:layout_marginEnd="12dp"
             android:ellipsize="end"
             android:maxLines="1"
+            android:textColor="@color/text_color"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -31,9 +33,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:ellipsize="end"
             android:maxLines="2"
+            android:textColor="@color/text_color"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_description"
             tools:text="Data: 28/09/2022" />
@@ -45,6 +48,9 @@
             android:layout_marginStart="8dp"
             android:ellipsize="end"
             android:maxLines="2"
+            android:textAlignment="center"
+            android:textColor="@color/text_color"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/text_date"
             app:layout_constraintTop_toTopOf="@+id/text_date"
             tools:text="Hora: 17:00" />
@@ -53,9 +59,10 @@
             android:id="@+id/text_result"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:text="Resultado: Receber um resultado clínico traz melhorias de vida ou notícias desanimadoras sobre o estado de saúde. Ele permite que os pacientes tomem decisões informadas sobre sua saúde e bem-estar. Além disso, saber quanto tempo resta na fila de espera os ajuda a se preparar mentalmente para o processo à frente. Entregar resultados com rapidez e precisão ajuda a todos os envolvidos; então sempre tente o seu melhor para fornecer relatórios precisos sempre que possível!"
+            android:textColor="@color/text_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/text_date"
             app:layout_constraintTop_toBottomOf="@+id/text_date" />
@@ -63,8 +70,9 @@
         <Button
             android:id="@+id/button_deliver_result"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/center_color"
             android:text="Entregar resultado para paciente"
             app:layout_constraintEnd_toEndOf="@+id/text_result"
             app:layout_constraintStart_toStartOf="@+id/text_result"
@@ -72,14 +80,15 @@
 
         <Button
             android:id="@+id/button_kept_clinic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/center_color"
             android:text="Resultado guardado na clínica"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/text_result"
-            app:layout_constraintStart_toStartOf="@+id/text_result"
+            app:layout_constraintEnd_toEndOf="@+id/button_deliver_result"
+            app:layout_constraintStart_toStartOf="@+id/button_deliver_result"
             app:layout_constraintTop_toBottomOf="@+id/button_deliver_result" />
 
 
